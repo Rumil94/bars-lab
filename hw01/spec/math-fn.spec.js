@@ -25,7 +25,7 @@ describe("Математические функции:", function() {
   });
 
   it("Вызов factorial на правильных параметрах", function() {
-    expect(factorial(5)).toBe(60);
+    expect(factorial(5)).toBe(120);
   });
 
   // nfib
