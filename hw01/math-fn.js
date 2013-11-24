@@ -56,7 +56,7 @@
 
 function factorial(n){
 
- 	var z = 1;
+ 	var z = 1, n, i;
 
 	if(n == 0){
 		return 1;
@@ -84,15 +84,12 @@ function factorial(n){
  */
 
  function nfib(n){
-
- 	var z = 0;
-
- 	for(i = 1; i <= n; i = i + z){
- 		if(i == n){
- 			return z;
- 		} else {
- 			z = z + i;
- 		}
- 	};
- 	return z;
+ 	var n;
+ 	if(n == 1){
+ 		return 0;
+ 	} else if(n == 2 || n == 3){
+ 		return 1;
+ 	} else {
+ 		return nfib(n - 1) + nfib(n - 2);
+ 	}
  }

@@ -20,7 +20,7 @@ function Warrior(name, level){
   // Ваш код здесь...
   this.name = name;
   this.level = level;
-}
+};
 
 /**
  * Задание 2. Добавить метод attack нашему воину.
@@ -37,6 +37,7 @@ function Warrior(name, level){
  */
 Warrior.prototype.attack = function() {
   // Ваш код здесь...
+  	return this.level * 0.1;
 };
 
 /**
@@ -48,14 +49,23 @@ Warrior.prototype.attack = function() {
  * Кодекс ситха: "Спокойствие — ложь, есть только страсть..."
  */
 
+ Jedi.prototype = new Warrior;
+
+ Sith.prototype = new Warrior;
+
 /**
  * Создает экземпляр джедая
  * @param {String} name Имя джедая.
  * @param {Number} level Уровень джедая.
  */
+
 function Jedi (name, level) {
   // Ваш код здесь...
-}
+  this.name = name;
+  this.level = level;
+  this.sideOfForce = "light";
+  this.code = "Нет волнения — есть покой...";
+};
 
 /**
  * Создает экземпляр ситха
@@ -63,6 +73,13 @@ function Jedi (name, level) {
  * @param {Number} level Уровень ситха.
  */
 // Ваш код здесь...
+
+function Sith(name, level){
+	this.name = name;
+	this.level = level;
+	this.sideOfForce = "dark";
+	this.code = "Спокойствие — ложь, есть только страсть...";
+};
 
 
 /**
@@ -74,6 +91,9 @@ function Jedi (name, level) {
  */
 // Ваш код здесь...
 
+Warrior.prototype.getCode = function(){
+	return this.code;
+}
 
 /**
  * Задание 4. Добавить метод toLightSide классу Jedi.
@@ -98,6 +118,17 @@ function Jedi (name, level) {
  */
 // Ваш код здесь...
 
+Jedi.prototype.toLightSide = function(jedi){
+	if (jedi instanceof Sith){
+		if(this.level > jedi.level){
+			jedi.sideOfForce = "light";
+		} else {
+			this.sideOfForce = "dark";
+		}
+	} else {
+		throw new Error("Invalid argument");
+	}
+}
 
 /**
  * Задание 5. Добавить метод toDarkSide классу Sith.
@@ -118,3 +149,16 @@ function Jedi (name, level) {
  * Если призываемый объект не является джедаем, выкидывается исключение.
  */
 // Ваш код здесь...
+
+Sith.prototype.toDarkSide = function(sith){
+	if(sith instanceof Jedi){
+		if(this.level > sith.level){
+			sith.sideOfForce = "dark";
+		} else {
+			this.sideOfForce = "light";
+		}
+	} else {
+		throw new Error("Invalid argument");
+	}
+	
+}
